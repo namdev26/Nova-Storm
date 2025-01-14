@@ -5,13 +5,13 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     private static InputManager instance;
-    public static InputManager Instance{get => instance;}
+    public static InputManager Instance { get => instance; }
 
     [SerializeField] protected Vector3 mouseWorldPos;
-    public Vector3 MouseWorldPos {get => mouseWorldPos;}
+    public Vector3 MouseWorldPos { get => mouseWorldPos; }
 
     protected void Awake()
-    {   
+    {
         if (InputManager.instance != null) Debug.LogError("Only 1 InputManager allow to exits");
         InputManager.instance = this;
     }
