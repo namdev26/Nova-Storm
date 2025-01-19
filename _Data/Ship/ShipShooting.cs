@@ -29,6 +29,7 @@ public class ShipShooting : MonoBehaviour
         Quaternion rotation = transform.rotation;
        //Transform newBullet =  Instantiate(this.bulletPrefab, spawnPos, rotation);
         Transform newBullet =  BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne, spawnPos, rotation);
+        newBullet.gameObject.SetActive(true);
         if (newBullet != null) return;
         
         newBullet.gameObject.SetActive(true);
