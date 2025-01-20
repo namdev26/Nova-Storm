@@ -10,6 +10,10 @@ public class NamMonoBehaviour : MonoBehaviour
         this.ResetValue();
     }
 
+    protected virtual void Start()
+    {
+        //
+    }
 
     protected virtual void Awake()
     {

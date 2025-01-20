@@ -8,6 +8,6 @@ public class BulletFly : ParentFly
     protected override void ResetValue()
     {
         base.ResetValue();
-        this.moveSpeed = 7f;
+        this.moveSpeed = 15f;
     }
 }

@@ -25,13 +25,11 @@ public abstract class Spawner : NamMonoBehaviour
     private void LoadPrefabs()
     {
         if (this.prefabs.Count > 0) return;
-
         Transform prefabObj = transform.Find("Prefabs");
         foreach (Transform prefab in prefabObj)
         {
             this.prefabs.Add(prefab);
         }
-
         this.HidePrefabs();
         Debug.Log(transform.name + ": Loaded prefabs", gameObject);
     }
