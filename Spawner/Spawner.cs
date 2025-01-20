@@ -4,17 +4,26 @@ using UnityEngine;
 
 public abstract class Spawner : NamMonoBehaviour
 {
-    
+
     [SerializeField] protected List<Transform> prefabs;
+    [SerializeField] protected Transform holder;
+    [SerializeField] protected List<Transform> poolObjs;
 
     protected override void LoadComponent()
-    {   
-        base.LoadComponent();
+    {
         this.LoadPrefabs();
+        this.LoadHolder();
+    }
+
+    protected virtual void LoadHolder()
+    {
+        if (this.holder != null) return;
+        this.holder = transform.Find("Holder");
+        Debug.Log(transform.name + ": Load Holder: " + gameObject);
     }
 
     private void LoadPrefabs()
-    {   
+    {
         if (this.prefabs.Count > 0) return;
 
         Transform prefabObj = transform.Find("Prefabs");
@@ -36,18 +45,43 @@ public abstract class Spawner : NamMonoBehaviour
     }
 
     public virtual Transform Spawn(string prefabName, Vector3 spawnPos, Quaternion rotation)
-    {   
+    {
         Transform prefab = this.GetPrefabByName(prefabName);
         if (prefab == null)
         {
             Debug.LogWarning(": Prefab not found: " + prefabName, gameObject);
             return null;
         }
-        Transform newPrefab = Instantiate(prefab, spawnPos, rotation);
+        Transform newPrefab = this.GetObjectFromPool(prefab);
+        newPrefab.SetPositionAndRotation(spawnPos, rotation);
+
+        newPrefab.parent = this.holder;
         return newPrefab;
     }
 
-    public virtual Transform GetPrefabByName(string prefabName){
+    protected virtual Transform GetObjectFromPool(Transform prefab)
+    {
+        foreach (Transform poolObj in this.poolObjs)
+        {
+            if (poolObj.name == prefab.name)
+            {
+                this.poolObjs.Remove(poolObj);
+                return poolObj;
+            }
+        }
+        Transform newPrefab = Instantiate(prefab);
+        newPrefab.name = prefab.name;
+        return newPrefab;
+    }
+
+    public virtual void Despawn(Transform obj)
+    {
+        this.poolObjs.Add(obj);
+        obj.gameObject.SetActive(false);
+    }
+
+    public virtual Transform GetPrefabByName(string prefabName)
+    {
         foreach (Transform prefab in this.prefabs)
         {
             if (prefab.name == prefabName) return prefab;

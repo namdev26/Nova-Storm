@@ -17,7 +17,7 @@ public class DespawnByDistane : Despawn
     {
         if (this.mainCam != null) return;
         this.mainCam = Transform.FindObjectOfType<Camera>().transform;
-        Debug.Log(transform.parent.name + ": :oadCamera");
+        Debug.Log(transform.parent.name + ": LoadCamera");
     }
 
     protected override bool CanDespawn()

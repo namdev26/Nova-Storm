@@ -7,7 +7,9 @@ public class NamMonoBehaviour : MonoBehaviour
     protected virtual void Reset()
     {
         this.LoadComponent();
+        this.ResetValue();
     }
+
 
     protected virtual void Awake()
     {
@@ -15,6 +17,11 @@ public class NamMonoBehaviour : MonoBehaviour
     }
 
     protected virtual void LoadComponent()
+    {
+        //for override
+    }
+
+    protected virtual void ResetValue()
     {
 
     }
