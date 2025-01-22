@@ -6,11 +6,14 @@ public class JunkController : NamMonoBehaviour
 {
     [SerializeField] protected JunkSpawner junkSpawner;
     public JunkSpawner JunkSpawner { get => junkSpawner; }
+    [SerializeField] protected JunkSpawnPoints spawnPoints;
+    public JunkSpawnPoints SpawnPoints { get => spawnPoints; }
 
     protected override void LoadComponent()
     {
         base.LoadComponent();
         this.LoadJunkSpawner();
+        this.LoadSpawnPoints();
     }
 
     protected virtual void LoadJunkSpawner()
@@ -20,4 +23,10 @@ public class JunkController : NamMonoBehaviour
         Debug.Log(transform.name + ": LoadJunkSpawner", gameObject);
     }
 
+    protected virtual void LoadSpawnPoints()
+    {
+        if (this.spawnPoints != null) return;
+        this.spawnPoints = Transform.FindObjectOfType<JunkSpawnPoints>();
+        Debug.Log(transform.name + ": LoadSpawnPoints", gameObject);
+    }
 }
