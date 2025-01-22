@@ -29,4 +29,8 @@ public class NamMonoBehaviour : MonoBehaviour
     {
 
     }
+    protected virtual void OnEnable()
+    {
+
+    }
 }

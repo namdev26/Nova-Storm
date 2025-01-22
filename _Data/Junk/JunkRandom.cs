@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JunkRandom : NamMonoBehaviour
 {
-    [SerializeField] protected JunkController junkController;
+    [SerializeField] protected JunkSpawnerController junkController;
 
     protected override void LoadComponent()
     {
@@ -15,7 +15,7 @@ public class JunkRandom : NamMonoBehaviour
     protected virtual void LoadJunkController()
     {
         if (this.junkController != null) return;
-        this.junkController = GetComponent<JunkController>();
+        this.junkController = GetComponent<JunkSpawnerController>();
         Debug.Log(transform.name + ": LoadJunkController", gameObject);
     }
 
@@ -25,7 +25,7 @@ public class JunkRandom : NamMonoBehaviour
     }
 
     protected virtual void JunkSpawning()
-    {   
+    {
         Transform ranPoint = this.junkController.SpawnPoints.GetRandom();
         Vector3 pos = ranPoint.position;
         Quaternion rot = this.transform.rotation;

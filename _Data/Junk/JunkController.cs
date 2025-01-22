@@ -4,29 +4,19 @@ using UnityEngine;
 
 public class JunkController : NamMonoBehaviour
 {
-    [SerializeField] protected JunkSpawner junkSpawner;
-    public JunkSpawner JunkSpawner { get => junkSpawner; }
-    [SerializeField] protected JunkSpawnPoints spawnPoints;
-    public JunkSpawnPoints SpawnPoints { get => spawnPoints; }
+    [SerializeField] protected Transform model;
+    public Transform Model { get => model; }
 
     protected override void LoadComponent()
     {
         base.LoadComponent();
-        this.LoadJunkSpawner();
-        this.LoadSpawnPoints();
+        this.LoadModel();
     }
 
-    protected virtual void LoadJunkSpawner()
+    protected virtual void LoadModel()
     {
-        if (this.junkSpawner != null) return;
-        this.junkSpawner = GetComponent<JunkSpawner>();
-        Debug.Log(transform.name + ": LoadJunkSpawner", gameObject);
-    }
-
-    protected virtual void LoadSpawnPoints()
-    {
-        if (this.spawnPoints != null) return;
-        this.spawnPoints = Transform.FindObjectOfType<JunkSpawnPoints>();
-        Debug.Log(transform.name + ": LoadSpawnPoints", gameObject);
+        if (this.model != null) return;
+        this.model = transform.Find("Model");
+        Debug.Log(transform.name + ": Load Model", gameObject);   // Implement your model loading logic here
     }
 }
