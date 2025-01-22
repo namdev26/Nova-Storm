@@ -8,5 +8,7 @@ public class JunkFly : ParentFly
     {
         base.ResetValue();
         this.moveSpeed = 1f;
+
+        
     }
 }
