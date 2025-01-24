@@ -573,6 +573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1049165526}
+  - component: {fileID: 1049165527}
   m_Layer: 0
   m_Name: Meteorite_1
   m_TagString: Untagged
@@ -600,6 +601,19 @@ Transform:
   - {fileID: 1064319029}
   m_Father: {fileID: 419934272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1049165527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049165525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f799b4c657c30743b31fe76ad4bd978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 1474597215}
 --- !u!1 &1050339198
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606da2f56efe46c4ab067f39f5a88880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  junkController: {fileID: 1049165527}
   speed: 9
 --- !u!1 &1075972868
 GameObject:
@@ -1017,7 +1032,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: c568092d7452f4cf9b5a6e629a61dcd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1213,6 +1228,7 @@ GameObject:
   - component: {fileID: 2114282510}
   - component: {fileID: 2114282511}
   - component: {fileID: 2114282513}
+  - component: {fileID: 2114282514}
   m_Layer: 0
   m_Name: JunkSpawner
   m_TagString: Untagged
@@ -1266,6 +1282,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   junkController: {fileID: 0}
+--- !u!114 &2114282514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114282508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6ab211e754d6b4887fecc6346f90c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  junkSpawner: {fileID: 2114282511}
+  spawnPoints: {fileID: 1255638737}
 --- !u!1 &1400420638347339
 GameObject:
   m_ObjectHideFlags: 0
