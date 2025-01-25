@@ -17,7 +17,6 @@ public class DamageReceiver : NamMonoBehaviour
         base.Start();
         this.Reborn();
     }
-
     protected override void OnEnable()
     {
         base.OnEnable();
