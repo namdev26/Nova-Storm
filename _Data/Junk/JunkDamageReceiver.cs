@@ -25,4 +25,11 @@ public class JunkDamageReceiver : DamageReceiver
     {
         this.junkController.JunkDespawn.DespawnObject();
     }
+
+    protected override void Refresh()
+    {
+        base.Refresh();
+        this.isDead = false;
+        this.hp = this.maxHp;
+    }
 }

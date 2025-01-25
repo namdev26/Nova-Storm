@@ -9,8 +9,8 @@ public class DamageReceiver : NamMonoBehaviour
 {
     [Header("Damage Receiver")]
     [SerializeField] protected SphereCollider sphereCollider;
-    [SerializeField] protected int hp = 10;
-    [SerializeField] protected int maxHp = 10;
+    [SerializeField] protected int hp = 1;
+    [SerializeField] protected int maxHp = 1;
     [SerializeField] protected bool isDead = false;
     protected override void Start()
     {
@@ -22,6 +22,7 @@ public class DamageReceiver : NamMonoBehaviour
     {
         base.OnEnable();
         this.LoadCollider();
+        this.Refresh();
     }
 
     protected virtual void LoadCollider()
@@ -32,13 +33,18 @@ public class DamageReceiver : NamMonoBehaviour
         this.sphereCollider.radius = 0.26f;
         Debug.Log(transform.name + ": Loaded Collider", gameObject);
     }
+    protected override void Refresh()
+    {
+        base.Refresh();
+        this.isDead = false;
+    }
     protected virtual void Reborn()
     {
         this.hp = this.maxHp;
     }
 
     public virtual void Add(int add)
-    {   
+    {
         if (this.IsDead()) return;
         this.hp += add;
         if (this.hp > this.maxHp) this.hp = this.maxHp;

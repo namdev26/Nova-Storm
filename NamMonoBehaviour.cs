@@ -33,4 +33,7 @@ public class NamMonoBehaviour : MonoBehaviour
     {
 
     }
+    protected virtual void Refresh(){
+        //for override
+    }
 }

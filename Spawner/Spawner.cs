@@ -7,6 +7,8 @@ public abstract class Spawner : NamMonoBehaviour
 
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected Transform holder;
+    [SerializeField] protected int spawnedCount = 0;
+    public int SpawnedCount {get => spawnedCount;}
     [SerializeField] protected List<Transform> poolObjs;
 
     protected override void LoadComponent()
@@ -54,6 +56,7 @@ public abstract class Spawner : NamMonoBehaviour
         newPrefab.SetPositionAndRotation(spawnPos, rotation);
 
         newPrefab.parent = this.holder;
+        this.spawnedCount++;
         return newPrefab;
     }
 
@@ -62,7 +65,7 @@ public abstract class Spawner : NamMonoBehaviour
         foreach (Transform poolObj in this.poolObjs)
         {
             if (poolObj.name == prefab.name)
-            {
+            {   
                 this.poolObjs.Remove(poolObj);
                 return poolObj;
             }
@@ -76,6 +79,7 @@ public abstract class Spawner : NamMonoBehaviour
     {
         this.poolObjs.Add(obj);
         obj.gameObject.SetActive(false);
+        this.spawnedCount--;
     }
 
     public virtual Transform GetPrefabByName(string prefabName)

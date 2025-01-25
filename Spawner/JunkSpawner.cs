@@ -14,4 +14,5 @@ public class JunkSpawner : Spawner
         if (JunkSpawner.instance != null) Debug.LogError("Only 1 InputManager allow to exits");
         JunkSpawner.instance = this;
     }
+    
 }

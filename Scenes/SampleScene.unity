@@ -179,6 +179,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 147078559}
+  - component: {fileID: 147078561}
+  - component: {fileID: 147078560}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -201,6 +203,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1049165526}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &147078560
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147078558}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.26
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &147078561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147078558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 849f7f221a6f1824184526cb7c722f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sphereCollider: {fileID: 147078560}
+  hp: 10
+  maxHp: 10
+  isDead: 0
+  junkController: {fileID: 1049165527}
 --- !u!1 &371601882
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 371601883}
   - component: {fileID: 371601884}
+  - component: {fileID: 371601885}
   m_Layer: 0
   m_Name: Despawn
   m_TagString: Untagged
@@ -243,6 +284,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d197cd99ea750cf418937a312c56ca64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disLimit: 25
+  distance: 0
+  mainCam: {fileID: 519420032}
+--- !u!114 &371601885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371601882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc45dc3399bbe44091efdee2a5a4c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   disLimit: 25
@@ -413,6 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 598419457}
   - component: {fileID: 598419458}
+  - component: {fileID: 598419459}
   m_Layer: 0
   m_Name: Despawn
   m_TagString: Untagged
@@ -447,7 +504,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a75b4e66cb13b3408269763c72d07b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disLimit: 70
+  disLimit: 50
+  distance: 0
+  mainCam: {fileID: 519420032}
+--- !u!114 &598419459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598419456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc071e321fd9444da00632a39595eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disLimit: 50
   distance: 0
   mainCam: {fileID: 519420032}
 --- !u!1 &687399719
@@ -736,6 +808,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b944eeaa39333a44398ff19c7a46bf4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  bulletController: {fileID: 1016620110}
 --- !u!1 &1016620108
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e1fa3fa018910498d71aeda3212920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageSender: {fileID: 0}
+  damageSender: {fileID: 1016338759}
+  bulletDespawn: {fileID: 598419459}
 --- !u!1 &1049165525
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 1474597215}
+  junkDespawn: {fileID: 371601885}
 --- !u!1 &1050339198
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,7 +1240,7 @@ GameObject:
   - component: {fileID: 1359700409}
   - component: {fileID: 1359700411}
   m_Layer: 0
-  m_Name: BulletImpart
+  m_Name: BulletImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
