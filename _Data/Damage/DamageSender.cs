@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageSender : NamMonoBehaviour
 {
-    [SerializeField] protected float damage = 1;
+    [SerializeField] protected int damage = 1;
     public virtual void Send(Transform obj)
     {
         DamageReceiver damageReceiver = obj.GetComponentInChildren<DamageReceiver>();
@@ -15,11 +15,5 @@ public class DamageSender : NamMonoBehaviour
     public virtual void Send(DamageReceiver damageReceiver)
     {
         damageReceiver.Deduct(this.damage);
-        this.DestroyObj();
-    }
-
-    protected virtual void DestroyObj()
-    {
-        Destroy(transform.parent.gameObject);
     }
 }
