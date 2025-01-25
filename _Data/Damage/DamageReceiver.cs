@@ -26,7 +26,7 @@ public class DamageReceiver : NamMonoBehaviour
 
     protected virtual void LoadCollider()
     {
-        if (this.sphereCollider == null) return;
+        if (this.sphereCollider != null) return;
         this.sphereCollider = GetComponent<SphereCollider>();
         this.sphereCollider.isTrigger = true;
         this.sphereCollider.radius = 0.26f;
@@ -38,19 +38,35 @@ public class DamageReceiver : NamMonoBehaviour
     }
 
     public virtual void Add(int add)
-    {
+    {   
+        if (this.IsDead()) return;
         this.hp += add;
         if (this.hp > this.maxHp) this.hp = this.maxHp;
     }
 
     public virtual void Deduct(int deduct)
     {
+        if (this.IsDead()) return;
         this.hp -= deduct;
-        if (this.hp < 0) this.hp = 0;
+        if (this.hp <= 0) this.hp = 0;
+        this.CheckIsDead();
     }
 
     protected virtual bool IsDead()
     {
         return this.hp <= 0;
+    }
+
+    protected virtual void CheckIsDead()
+    {
+        if (!IsDead()) return;
+        this.isDead = true;
+        this.OnDead();
+    }
+
+    protected virtual void OnDead()
+    {
+        // Implement death logic here
+        Debug.Log(transform.name + ": Dead", gameObject);
     }
 }

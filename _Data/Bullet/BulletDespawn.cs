@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkSpawn : DespawnByDistane
+public class BulletDespawn : DespawnByDistane
 {
     public override void DespawnObject()
     {
-        JunkSpawner.Instance.Despawn(transform.parent);
+        BulletSpawner.Instance.Despawn(transform.parent);
     }
 
     protected override void ResetValue()
     {
         base.ResetValue();
-        this.disLimit = 25f;
+        this.disLimit = 50f;
     }
 }

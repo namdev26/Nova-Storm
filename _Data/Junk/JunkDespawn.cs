@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkSpawn : DespawnByDistane
+public class JunkDespawn : DespawnByDistane
 {
     public override void DespawnObject()
     {

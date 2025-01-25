@@ -5,9 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
 
-public class BulletImpart : BulletAbstract
+public class BulletImpact : BulletAbstract
 {
-    [Header("Bullet Impart")]
+    [Header("Bullet Impact")]
     [SerializeField] protected SphereCollider sphereCollider;
     [SerializeField] protected Rigidbody _rigidbody;
 
