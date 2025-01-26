@@ -5,7 +5,7 @@ using UnityEngine;
 public class JunkSpawnerRandom : NamMonoBehaviour
 {
     [SerializeField] protected JunkSpawnerController junkSpawnerController;
-    [SerializeField] protected float randomDelay  = 1f;
+    [SerializeField] protected float randomDelay = 1f;
     [SerializeField] protected float randomTimer = 0f;
     [SerializeField] protected float randomLimit = 5f;
     protected override void LoadComponent()
@@ -36,7 +36,9 @@ public class JunkSpawnerRandom : NamMonoBehaviour
         Transform ranPoint = this.junkSpawnerController.SpawnPoints.GetRandom();
         Vector3 pos = ranPoint.position;
         Quaternion rot = this.transform.rotation;
-        Transform obj = this.junkSpawnerController.JunkSpawner.Spawn(JunkSpawner.meteoriteOne, pos, rot);
+
+        Transform prefab = this.junkSpawnerController.JunkSpawner.RandomPrefab();
+        Transform obj = this.junkSpawnerController.JunkSpawner.Spawn(prefab, pos, rot);
         obj.gameObject.SetActive(true);
         //Invoke(nameof(this.JunkSpawning), 1f);
     }
