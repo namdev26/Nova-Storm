@@ -9,7 +9,8 @@ public class ShipShooting : MonoBehaviour
     [SerializeField] protected float shootDelay = 1f;
     [SerializeField] protected float shootTimer = 5f;
 
-    void Update() {
+    void Update()
+    {
         this.IsShooting();
     }
 
@@ -27,11 +28,11 @@ public class ShipShooting : MonoBehaviour
 
         Vector3 spawnPos = transform.position;
         Quaternion rotation = transform.rotation;
-       //Transform newBullet =  Instantiate(this.bulletPrefab, spawnPos, rotation);
-        Transform newBullet =  BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne, spawnPos, rotation);
+        //Transform newBullet =  Instantiate(this.bulletPrefab, spawnPos, rotation);
+        Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne, spawnPos, rotation);
         newBullet.gameObject.SetActive(true);
         if (newBullet != null) return;
-        
+
         newBullet.gameObject.SetActive(true);
         Debug.Log("Is Shooting");
     }

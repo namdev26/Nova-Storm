@@ -15,13 +15,12 @@ public class DamageReceiver : NamMonoBehaviour
     protected override void Start()
     {
         base.Start();
-        this.Reborn();
     }
     protected override void OnEnable()
     {
         base.OnEnable();
         this.LoadCollider();
-        this.Refresh();
+        this.Reborn();
     }
 
     protected virtual void LoadCollider()
@@ -32,14 +31,10 @@ public class DamageReceiver : NamMonoBehaviour
         this.sphereCollider.radius = 0.26f;
         Debug.Log(transform.name + ": Loaded Collider", gameObject);
     }
-    protected override void Refresh()
-    {
-        base.Refresh();
-        this.isDead = false;
-    }
-    protected virtual void Reborn()
+    public virtual void Reborn()
     {
         this.hp = this.maxHp;
+        this.isDead = false;
     }
 
     public virtual void Add(int add)
@@ -60,6 +55,12 @@ public class DamageReceiver : NamMonoBehaviour
     protected virtual bool IsDead()
     {
         return this.hp <= 0;
+    }
+
+    protected override void ResetValue()
+    {
+        base.ResetValue();
+        this.Reborn();
     }
 
     protected virtual void CheckIsDead()

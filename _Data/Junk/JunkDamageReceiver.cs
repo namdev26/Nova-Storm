@@ -12,6 +12,7 @@ public class JunkDamageReceiver : DamageReceiver
         base.LoadComponent();
         this.LoadJunkController();
         this.LoadCollider();
+        this.Reborn();
     }
 
     protected virtual void LoadJunkController()
@@ -26,10 +27,9 @@ public class JunkDamageReceiver : DamageReceiver
         this.junkController.JunkDespawn.DespawnObject();
     }
 
-    protected override void Refresh()
-    {
-        base.Refresh();
-        this.isDead = false;
-        this.hp = this.maxHp;
+    public override void Reborn(){
+        this.maxHp = this.junkController.JunkSO.hpMax;
+        base.Reborn();
+        //Debug.LogWarning("Reborn" , gameObject);
     }
 }
