@@ -5,7 +5,7 @@ using UnityEngine;
 using Unity.VisualScripting;
 
 [RequireComponent(typeof(SphereCollider))]
-public class DamageReceiver : NamMonoBehaviour
+public abstract class DamageReceiver : NamMonoBehaviour
 {
     [Header("Damage Receiver")]
     [SerializeField] protected SphereCollider sphereCollider;
@@ -70,9 +70,5 @@ public class DamageReceiver : NamMonoBehaviour
         this.OnDead();
     }
 
-    protected virtual void OnDead()
-    {
-        // Implement death logic here
-        Debug.Log(transform.name + ": Dead", gameObject);
-    }
+    protected abstract void OnDead();
 }
