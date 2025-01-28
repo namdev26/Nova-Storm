@@ -7,7 +7,8 @@ public class FXSpawner : Spawner
     private static FXSpawner instance;
     public static FXSpawner Instance { get => instance; }
 
-    public static string FXOne = "Smoke_1";
+    public static string smokeOne = "Smoke_1";
+    public static string impactOne = "Impact_1";
 
     protected override void Awake()
     {

@@ -36,7 +36,7 @@ public class JunkDamageReceiver : DamageReceiver
 
     protected virtual string GetFXDeadName()
     {
-        return FXSpawner.FXOne;
+        return FXSpawner.smokeOne;
     }
 
     public override void Reborn()
