@@ -8,6 +8,8 @@ public class ShipShooting : MonoBehaviour
     [SerializeField] protected bool isShooting = false;
     [SerializeField] protected float shootDelay = 1f;
     [SerializeField] protected float shootTimer = 5f;
+    // [SerializeField] protected BulletController bulletController1;
+    // public BulletController BulletController {get => bulletController1;}
 
     void Update()
     {
@@ -34,6 +36,8 @@ public class ShipShooting : MonoBehaviour
         if (newBullet != null) return;
 
         newBullet.gameObject.SetActive(true);
+        BulletController bulletController = newBullet.GetComponent<BulletController>();
+        bulletController.SetShooter(transform.parent);
         Debug.Log("Is Shooting");
     }
 

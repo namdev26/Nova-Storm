@@ -8,6 +8,8 @@ public class BulletController : NamMonoBehaviour
     public DamageSender DamageSender { get => damageSender; }
     [SerializeField] protected BulletDespawn bulletDespawn;
     public BulletDespawn BulletDespawn { get => bulletDespawn; }
+    [SerializeField] protected Transform shooter;
+    public Transform Shooter { get => shooter; }
 
     protected override void LoadComponent()
     {
@@ -25,8 +27,13 @@ public class BulletController : NamMonoBehaviour
 
     protected virtual void LoadBulletDespawn()
     {
-        if (this.bulletDespawn!= null) return;
+        if (this.bulletDespawn != null) return;
         this.bulletDespawn = transform.GetComponentInChildren<BulletDespawn>();
         Debug.Log(transform.name + ": Load BulletDespawn", gameObject);
+    }
+
+    public virtual void SetShooter(Transform shooter)
+    {
+        this.shooter = shooter;
     }
 }
