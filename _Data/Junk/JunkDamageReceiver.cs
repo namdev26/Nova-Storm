@@ -25,6 +25,7 @@ public class JunkDamageReceiver : DamageReceiver
     {
         this.OnDeadFX();// cài hiệu ứng chết
         this.junkController.JunkDespawn.DespawnObject();
+        DropManager.Instance.Drop(this.junkController.JunkSO.dropList);
     }
 
     protected virtual void OnDeadFX()
