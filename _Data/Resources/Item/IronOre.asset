@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674e46882bb98d74cbc0f02030a879d2, type: 3}
   m_Name: IronOre
   m_EditorClassIdentifier: 
-  itemCode: code
-  itemName: Iron1
+  itemCode: 1
+  itemName: IronOre
