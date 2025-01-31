@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   junkName: Mereorie_2
   hpMax: 4
+  dropList:
+  - itemSO: {fileID: 11400000, guid: a1ef00eea41c95c4392de77804610d6d, type: 2}
+    dropRate: 100000
+    minDrop: 0
+    maxDrop: 0

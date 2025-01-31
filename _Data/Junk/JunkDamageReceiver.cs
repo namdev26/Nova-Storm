@@ -1,6 +1,8 @@
+using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class JunkDamageReceiver : DamageReceiver
 {
@@ -24,8 +26,14 @@ public class JunkDamageReceiver : DamageReceiver
     protected override void OnDead()
     {
         this.OnDeadFX();// cài hiệu ứng chết
+        this.OnDeadDrop();
         this.junkController.JunkDespawn.DespawnObject();
-        DropManager.Instance.Drop(this.junkController.JunkSO.dropList); // drop~
+    }
+
+    protected virtual void OnDeadDrop(){
+        UnityEngine.Vector3 dropPos = transform.position;
+        UnityEngine.Quaternion dropRot = transform.rotation;
+        ItemDropSpawner.Instance.Drop(this.junkController.JunkSO.dropList, dropPos, dropRot);
     }
 
     protected virtual void OnDeadFX()
