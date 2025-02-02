@@ -49,8 +49,10 @@ public class ItemLooter : NamMonoBehaviour
         ItemPickupable itemPickupable = collider.GetComponent<ItemPickupable>();
         if (itemPickupable == null) return;
 
-        Debug.Log(collider.name);
-        Debug.Log(collider.transform.parent.name);
-        Debug.Log("Can pick up");
+        ItemCode itemCode = itemPickupable.GetItemCode();
+        if (this._inventory.AddItem(itemCode, 1))
+        {
+            itemPickupable.Picked();
+        }
     }
 }

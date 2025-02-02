@@ -5,11 +5,11 @@ using UnityEngine;
 public class JunkController : NamMonoBehaviour
 {
     [SerializeField] protected Transform model;
-    public Transform Model { get => model; }
+    public Transform Model => model;
     [SerializeField] protected JunkDespawn junkDespawn;
-    public JunkDespawn JunkDespawn { get => junkDespawn; }
+    public JunkDespawn JunkDespawn => junkDespawn;
     [SerializeField] protected JunkSO junkSO;
-    public JunkSO JunkSO { get => junkSO; }
+    public JunkSO JunkSO => junkSO;
 
     protected override void LoadComponent()
     {
