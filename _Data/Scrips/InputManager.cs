@@ -5,29 +5,26 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     private static InputManager instance;
-    public static InputManager Instance { get => instance; }
+    public static InputManager Instance => instance;
     [SerializeField] protected Vector3 mouseWorldPos;
+    public Vector3 MouseWorldPos => mouseWorldPos;
     [SerializeField] protected float onFiring;
-    public float OnFiring { get => onFiring ;}
-    public Vector3 MouseWorldPos { get => mouseWorldPos; }
-
+    public float OnFiring => onFiring;
     protected void Awake()
     {
         if (InputManager.instance != null) Debug.LogError("Only 1 InputManager allow to exits");
         InputManager.instance = this;
     }
-
     void Update()
     {
         this.GetMouseDown();
     }
-
     void FixedUpdate()
     {
         this.GetMousePos();
     }
-
-    protected virtual void GetMouseDown(){
+    protected virtual void GetMouseDown()
+    {
         this.onFiring = Input.GetAxis("Fire1");
     }
     protected virtual void GetMousePos()

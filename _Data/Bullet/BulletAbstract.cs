@@ -12,7 +12,6 @@ public abstract class BulletAbstract : NamMonoBehaviour
         base.LoadComponent();
         this.LoadDamageReceiver();
     }
-
     protected virtual void LoadDamageReceiver()
     {
         if (this.BulletController != null) return;

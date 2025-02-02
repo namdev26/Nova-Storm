@@ -15,7 +15,7 @@ MonoBehaviour:
   junkName: Mereorie_3
   hpMax: 6
   dropList:
-  - itemSO: {fileID: 11400000, guid: b93d38c3cca8a8d428bad53d5c636f52, type: 2}
+  - itemSO: {fileID: 11400000, guid: fe80bf2ff4e33184c8970eff1c319568, type: 2}
     dropRate: 100000
     minDrop: 0
     maxDrop: 0

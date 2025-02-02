@@ -7,21 +7,18 @@ public class ShipMovement : MonoBehaviour
 {
     [SerializeField] protected Vector3 targetPosition;
     [SerializeField] protected float speed = 0.1f;
-
     void FixedUpdate()
     {
         this.GetTargetPosition();
         this.LookAtTarget();
         this.Moving();
     }
-
     protected virtual void GetTargetPosition()
     {
         // Lấy vị trí của chuột đang click vào game world
         this.targetPosition = InputManager.Instance.MouseWorldPos;
         this.targetPosition.z = 0;
     }
-
     protected virtual void LookAtTarget()
     {
         Vector3 diff = this.targetPosition - transform.parent.position;
@@ -29,7 +26,6 @@ public class ShipMovement : MonoBehaviour
         float rot_x = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.parent.rotation = Quaternion.Euler(0f, 0f, rot_x);  // Xoay theo chiều x để tàu đảo hướng đi
     }
-
     protected virtual void Moving()
     {
         // Di chuyển tàu đến vị trí mà người dùng đã click chuột
