@@ -50,7 +50,7 @@ public class Inventory : NamMonoBehaviour
 
     protected virtual ItemInventory AddEmptyProfile(ItemCode itemCode)
     {
-        var profiles = Resources.LoadAll("ItemProfiles", typeof(ItemProfileSO));
+        var profiles = Resources.LoadAll("Item", typeof(ItemProfileSO));
         foreach (ItemProfileSO profile in profiles)
         {
             if (profile.itemCode != itemCode) continue;

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55513633fa892a5409596d04e261535f, type: 3}
-  m_Name: IronOre
+  m_Name: CoalOreProfile
   m_EditorClassIdentifier: 
-  itemCode: 1
+  itemCode: 3
   itemType: 1
-  itemName: Iron Ore
+  itemName: Coal Ore
   defaultMaxStack: 7

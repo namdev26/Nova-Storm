@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Item Profile", menuName = "SO/Item Profile")]
+[CreateAssetMenu(fileName = "ItemProfile", menuName = "SO/ItemProfile")]
 public class ItemProfileSO : ScriptableObject
 {
     public ItemCode itemCode = ItemCode.NoItem;
