@@ -5,9 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
 
-public class ItemLooter : NamMonoBehaviour
+public class ItemLooter : InventoryAbstract
 {
-    [SerializeField] private Inventory _inventory;
     [SerializeField] private SphereCollider _sphereCollider;
     [SerializeField] private Rigidbody _rigidbody;
 
@@ -18,14 +17,6 @@ public class ItemLooter : NamMonoBehaviour
         this.LoadTrigger();
         this.LoadRigidbody();
     }
-
-    protected virtual void LoadInventory()
-    {
-        if (this._inventory != null) return;
-        this._inventory = transform.parent.GetComponent<Inventory>();
-        Debug.Log(transform.name + " loaded in inventory", gameObject);
-    }
-
     protected virtual void LoadTrigger()
     {
         if (this._sphereCollider != null) return;
@@ -50,7 +41,7 @@ public class ItemLooter : NamMonoBehaviour
         if (itemPickupable == null) return;
 
         ItemCode itemCode = itemPickupable.GetItemCode();
-        if (this._inventory.AddItem(itemCode, 1))
+        if (this.inventory.AddItem(itemCode, 1))
         {
             itemPickupable.Picked();
         }
