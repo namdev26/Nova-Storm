@@ -15,4 +15,10 @@ MonoBehaviour:
   itemCode: 4
   itemType: 1
   itemName: Diamond
-  defaultMaxStack: 7
+  defaultMaxStack: 1
+  upgradeLevels:
+  - ingredients:
+    - itemProfile: {fileID: 11400000, guid: 9d9014da80c14f34391f95bbd43390b2, type: 2}
+      itemCount: 2
+    - itemProfile: {fileID: 11400000, guid: 71d1dcac4f9291947b40f31fba5db165, type: 2}
+      itemCount: 3

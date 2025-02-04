@@ -34,7 +34,7 @@ public class JunkDamageReceiver : DamageReceiver
     {
         UnityEngine.Vector3 dropPos = transform.position;
         UnityEngine.Quaternion dropRot = transform.rotation;
-        ItemSpawner.Instance.Drop(this.junkController.JunkSO.dropList, dropPos, dropRot);
+        ItemDropSpawner.Instance.Drop(this.junkController.JunkSO.dropList, dropPos, dropRot);
     }
 
     protected virtual void OnDeadFX()

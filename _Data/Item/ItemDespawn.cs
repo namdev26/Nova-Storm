@@ -6,7 +6,7 @@ public class ItemDespawn : DespawnByDistane
 {
     public override void DespawnObject()
     {
-        ItemSpawner.Instance.Despawn(transform.parent);
+        ItemDropSpawner.Instance.Despawn(transform.parent);
     }
 
     protected override void ResetValue()

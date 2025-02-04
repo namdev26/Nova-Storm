@@ -13,6 +13,8 @@ public class ItemUpgrade : InventoryAbstract
     {
         base.Start();
         Invoke(nameof(this.Test), 2);
+        Invoke(nameof(this.Test), 3);
+        Invoke(nameof(this.Test), 4);
     }
 
     private void Test()
