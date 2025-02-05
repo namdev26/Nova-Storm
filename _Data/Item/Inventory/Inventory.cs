@@ -28,10 +28,18 @@ public class Inventory : NamMonoBehaviour
         return this.AddItem(itemCode, addCount);
     }
 
-    public virtual bool AddEquipMent(ItemInventory itemInventory)
-    {
+    public virtual bool AddEquipMent(ItemInventory itemPicked)
+    {   
+
         if (this.IsInventoryFull()) return false;
-        this.items.Add(itemInventory);
+
+        ItemInventory item = itemPicked.Clone ();
+        // ItemInventory item = new ItemInventory();
+        // item.itemProfile = itemPicked.itemProfile;
+        // item.itemCount = itemPicked.itemCount;
+        // item.upgradeLevel = itemPicked.upgradeLevel;
+
+        this.items.Add(item);
         return true;
     }
     public virtual bool AddItem(ItemCode itemCode, int addCount)
