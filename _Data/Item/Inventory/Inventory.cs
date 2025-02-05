@@ -34,10 +34,6 @@ public class Inventory : NamMonoBehaviour
         if (this.IsInventoryFull()) return false;
 
         ItemInventory item = itemPicked.Clone ();
-        // ItemInventory item = new ItemInventory();
-        // item.itemProfile = itemPicked.itemProfile;
-        // item.itemCount = itemPicked.itemCount;
-        // item.upgradeLevel = itemPicked.upgradeLevel;
 
         this.items.Add(item);
         return true;
