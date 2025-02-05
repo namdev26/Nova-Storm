@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DiamondOreProfile
   m_EditorClassIdentifier: 
   itemCode: 4
-  itemType: 1
+  itemType: 2
   itemName: Diamond
   defaultMaxStack: 1
   upgradeLevels:
@@ -21,4 +21,14 @@ MonoBehaviour:
     - itemProfile: {fileID: 11400000, guid: 9d9014da80c14f34391f95bbd43390b2, type: 2}
       itemCount: 2
     - itemProfile: {fileID: 11400000, guid: 71d1dcac4f9291947b40f31fba5db165, type: 2}
+      itemCount: 2
+  - ingredients:
+    - itemProfile: {fileID: 11400000, guid: 9d9014da80c14f34391f95bbd43390b2, type: 2}
       itemCount: 3
+    - itemProfile: {fileID: 11400000, guid: 71d1dcac4f9291947b40f31fba5db165, type: 2}
+      itemCount: 3
+  - ingredients:
+    - itemProfile: {fileID: 11400000, guid: 9d9014da80c14f34391f95bbd43390b2, type: 2}
+      itemCount: 4
+    - itemProfile: {fileID: 11400000, guid: 71d1dcac4f9291947b40f31fba5db165, type: 2}
+      itemCount: 4

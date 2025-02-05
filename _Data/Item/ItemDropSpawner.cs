@@ -28,6 +28,8 @@ public class ItemDropSpawner : Spawner
         if (itemDrop == null) return null;
         itemDrop.gameObject.SetActive(true);
 
+        ItemController itemController = itemDrop.GetComponent<ItemController>();
+        itemController.SetItemInventory(itemInventory);
         return itemDrop;
     }
 }

@@ -16,3 +16,4 @@ MonoBehaviour:
   itemType: 1
   itemName: Coal Ore
   defaultMaxStack: 7
+  upgradeLevels: []
