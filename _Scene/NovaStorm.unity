@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 211068319}
   - component: {fileID: 211068320}
   m_Layer: 0
-  m_Name: ItemDrop
+  m_Name: InventoryDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1702,7 +1702,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d882e861b759c3340bb065c050e71619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDespawn: {fileID: 1089760116}
+  itemDespawn: {fileID: 1929501524}
+  itemInventory:
+    itemProfile: {fileID: 11400000, guid: 71d1dcac4f9291947b40f31fba5db165, type: 2}
+    itemCount: 1
+    maxStack: 7
+    upgradeLevel: 0
 --- !u!1 &997792048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1755,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d882e861b759c3340bb065c050e71619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDespawn: {fileID: 399679981}
+  itemDespawn: {fileID: 0}
+  itemInventory:
+    itemProfile: {fileID: 11400000, guid: 081be9380e08c9042b04b7c492b0814f, type: 2}
+    itemCount: 1
+    maxStack: 7
+    upgradeLevel: 0
 --- !u!1 &1016338757
 GameObject:
   m_ObjectHideFlags: 0
@@ -3838,6 +3848,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDespawn: {fileID: 1929501524}
+  itemInventory:
+    itemProfile: {fileID: 11400000, guid: 9d9014da80c14f34391f95bbd43390b2, type: 2}
+    itemCount: 1
+    maxStack: 7
+    upgradeLevel: 0
 --- !u!1 &2032398488
 GameObject:
   m_ObjectHideFlags: 0

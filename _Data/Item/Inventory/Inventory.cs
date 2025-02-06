@@ -29,11 +29,11 @@ public class Inventory : NamMonoBehaviour
     }
 
     public virtual bool AddEquipMent(ItemInventory itemPicked)
-    {   
+    {
 
         if (this.IsInventoryFull()) return false;
 
-        ItemInventory item = itemPicked.Clone ();
+        ItemInventory item = itemPicked.Clone();
 
         this.items.Add(item);
         return true;
