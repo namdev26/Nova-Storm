@@ -34,7 +34,7 @@ public class JunkDamageReceiver : DamageReceiver
     {
         UnityEngine.Vector3 dropPos = transform.position;
         UnityEngine.Quaternion dropRot = transform.rotation;
-        ItemDropSpawner.Instance.Drop(this.junkController.JunkSO.dropList, dropPos, dropRot);
+        ItemDropSpawner.Instance.Drop(this.junkController.ShootableObjectSO.dropList, dropPos, dropRot);
     }
 
     protected virtual void OnDeadFX()
@@ -51,7 +51,7 @@ public class JunkDamageReceiver : DamageReceiver
 
     public override void Reborn()
     {
-        this.maxHp = this.junkController.JunkSO.hpMax;
+        this.maxHp = this.junkController.ShootableObjectSO.hpMax;
         base.Reborn();
         //Debug.LogWarning("Reborn" , gameObject);
     }

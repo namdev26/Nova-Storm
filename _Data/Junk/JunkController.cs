@@ -8,8 +8,8 @@ public class JunkController : NamMonoBehaviour
     public Transform Model => model;
     [SerializeField] protected JunkDespawn junkDespawn;
     public JunkDespawn JunkDespawn => junkDespawn;
-    [SerializeField] protected JunkSO junkSO;
-    public JunkSO JunkSO => junkSO;
+    [SerializeField] protected ShootableObjectSO shootableObjectSO;
+    public ShootableObjectSO ShootableObjectSO => shootableObjectSO;
 
     protected override void LoadComponent()
     {
@@ -21,10 +21,10 @@ public class JunkController : NamMonoBehaviour
 
     protected virtual void LoadJunkSO()
     {
-        if (this.junkSO != null) return;
-        string resPath = "Junk/" + transform.name;
-        this.junkSO = Resources.Load<JunkSO>(resPath);
-        Debug.Log(transform.name + ": LoadJunkSO" + resPath, gameObject);
+        if (this.shootableObjectSO != null) return;
+        string resPath = "ShootableObject/Junk/" + transform.name;
+        this.shootableObjectSO = Resources.Load<ShootableObjectSO>(resPath);
+        //Debug.Log(transform.name + ": LoadJunkSO" + resPath, gameObject);
     }
 
     protected virtual void LoadJunkDespawn()
