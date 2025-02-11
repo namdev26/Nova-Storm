@@ -14,7 +14,7 @@ public class InventoryDrop : InventoryAbstract
     protected override void Start()
     {
         base.Start();
-        Invoke(nameof(this.Test), 5);
+        //Invoke(nameof(this.Test), 5);
     }
 
     private void Test()
