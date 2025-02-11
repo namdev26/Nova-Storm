@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkSpawnerController : NamMonoBehaviour
+public class SpawnerController : NamMonoBehaviour
 {
-    [SerializeField] protected JunkSpawner junkSpawner;
-    public JunkSpawner JunkSpawner => junkSpawner; 
+    [SerializeField] protected Spawner spawner;
+    public Spawner Spawner => spawner;
     [SerializeField] protected SpawnPoints spawnPoints;
-    public SpawnPoints SpawnPoints  => spawnPoints;
+    public SpawnPoints SpawnPoints => spawnPoints;
 
     protected override void LoadComponent()
     {
@@ -18,8 +18,8 @@ public class JunkSpawnerController : NamMonoBehaviour
 
     protected virtual void LoadSpawner()
     {
-        if (this.junkSpawner != null) return;
-        this.junkSpawner = GetComponent<JunkSpawner>();
+        if (this.spawner != null) return;
+        this.spawner = GetComponent<Spawner>();
         Debug.Log(transform.name + ": LoadSpawner", gameObject);
     }
 

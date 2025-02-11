@@ -51,7 +51,7 @@ public class ShootableObjectDamageReceiver : DamageReceiver
 
     public override void Reborn()
     {
-        this.maxHp = this.shootableObjectController.ShootableObjectSO.hpMax;
+        this.hpMax = this.shootableObjectController.ShootableObjectSO.hpMax;
         base.Reborn();
         //Debug.LogWarning("Reborn" , gameObject);
     }

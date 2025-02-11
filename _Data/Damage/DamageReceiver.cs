@@ -1,60 +1,22 @@
-using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.VisualScripting;
 
 [RequireComponent(typeof(SphereCollider))]
 public abstract class DamageReceiver : NamMonoBehaviour
 {
     [Header("Damage Receiver")]
     [SerializeField] protected SphereCollider sphereCollider;
-    [SerializeField] protected int hp = 1;
-    [SerializeField] protected int maxHp = 1;
+    [SerializeField] protected double hp = 1;
+    [SerializeField] protected double hpMax = 2;
     [SerializeField] protected bool isDead = false;
-    protected override void Start()
-    {
-        base.Start();
-    }
+
+    public double HP => hp;
+    public double HPMax => hpMax;
+
     protected override void OnEnable()
     {
-        base.OnEnable();
-        this.LoadCollider();
         this.Reborn();
-    }
-
-    protected virtual void LoadCollider()
-    {
-        if (this.sphereCollider != null) return;
-        this.sphereCollider = GetComponent<SphereCollider>();
-        this.sphereCollider.isTrigger = true;
-        this.sphereCollider.radius = 0.26f;
-        Debug.Log(transform.name + ": Loaded Collider", gameObject);
-    }
-    public virtual void Reborn()
-    {
-        this.hp = this.maxHp;
-        this.isDead = false;
-    }
-
-    public virtual void Add(int add)
-    {
-        if (this.IsDead()) return;
-        this.hp += add;
-        if (this.hp > this.maxHp) this.hp = this.maxHp;
-    }
-
-    public virtual void Deduct(int deduct)
-    {
-        if (this.IsDead()) return;
-        this.hp -= deduct;
-        if (this.hp <= 0) this.hp = 0;
-        this.CheckIsDead();
-    }
-
-    protected virtual bool IsDead()
-    {
-        return this.hp <= 0;
     }
 
     protected override void ResetValue()
@@ -63,11 +25,58 @@ public abstract class DamageReceiver : NamMonoBehaviour
         this.Reborn();
     }
 
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        this.LoadCollider();
+    }
+
+    protected virtual void LoadCollider()
+    {
+        if (this.sphereCollider != null) return;
+        this.sphereCollider = GetComponent<SphereCollider>();
+        this.sphereCollider.isTrigger = true;
+        this.sphereCollider.radius = 0.2f;
+        Debug.LogWarning(transform.name + ": LoadCollider", gameObject);
+    }
+    public virtual void Reborn()
+    {
+        this.hp = this.hpMax;
+        this.isDead = false;
+    }
+
+    public virtual void Add(int add)
+    {
+        if (this.isDead) return;
+
+        this.hp += add;
+        if (this.hp > this.hpMax) this.hp = this.hpMax;
+    }
+
+    public virtual void Deduct(double deduct)
+    {
+        if (this.isDead) return;
+
+        this.hp -= deduct;
+        if (this.hp < 0) this.hp = 0;
+        this.CheckIsDead();
+    }
+
+    public virtual bool IsDead()
+    {
+        return this.hp <= 0;
+    }
+
     protected virtual void CheckIsDead()
     {
-        if (!IsDead()) return;
+        if (!this.IsDead()) return;
         this.isDead = true;
         this.OnDead();
+    }
+
+    public virtual void SetHPMax(double hpMax)
+    {
+        this.hpMax = hpMax;
     }
 
     protected abstract void OnDead();

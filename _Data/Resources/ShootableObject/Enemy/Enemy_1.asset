@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2352bbebfdddc194ca79ecf7038b9a03, type: 3}
   m_Name: Enemy_1
   m_EditorClassIdentifier: 
-  junkName: Shootable Object
-  obiectType: 0
+  junkName: Enemy_1
+  obiectType: 2
   hpMax: 2
   dropList: []

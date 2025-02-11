@@ -4,10 +4,9 @@ using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
-
-public class BulletImpact : BulletAbstract
+public class BulletImpart : BulletAbstract
 {
-    [Header("Bullet Impact")]
+    [Header("Bullet Impart")]
     [SerializeField] protected SphereCollider sphereCollider;
     [SerializeField] protected Rigidbody _rigidbody;
 
@@ -15,7 +14,7 @@ public class BulletImpact : BulletAbstract
     {
         base.LoadComponent();
         this.LoadCollider();
-        this.LoadRigidbody();
+        this.LoadRigibody();
     }
 
     protected virtual void LoadCollider()
@@ -23,37 +22,26 @@ public class BulletImpact : BulletAbstract
         if (this.sphereCollider != null) return;
         this.sphereCollider = GetComponent<SphereCollider>();
         this.sphereCollider.isTrigger = true;
-        this.sphereCollider.radius = 0.04f;
-        Debug.Log(transform.name + ": Loaded collider", gameObject);
+        this.sphereCollider.radius = 0.05f;
+        Debug.Log(transform.name + ": LoadCollider", gameObject);
     }
 
-    protected virtual void LoadRigidbody()
+    protected virtual void LoadRigibody()
     {
         if (this._rigidbody != null) return;
-        this._rigidbody = this.GetComponent<Rigidbody>();
+        this._rigidbody = GetComponent<Rigidbody>();
         this._rigidbody.isKinematic = true;
-        Debug.Log(transform.name + ": Loaded rigidbody", gameObject);
+        Debug.Log(transform.name + ": LoadRigibody", gameObject);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.transform.parent);
+        //Debug.Log(transform.parent.name);
+        //Debug.Log(bulletController.Shooter.name);
         if (other.transform.parent == this.bulletController.Shooter) return;
-        
+
         this.bulletController.DamageSender.Send(other.transform);
         //this.CreateImpactFX(other);
     }
-
-    // protected virtual void CreateImpactFX(Collider other)
-    // {
-    //     string fxName = this.GetImpactFX();
-    //     Vector3 hitPos = transform.position;
-    //     Quaternion hitRot = transform.rotation;
-    //     Transform fxImpact = FXSpawner.Instance.Spawn(fxName, hitPos, hitRot);
-    //     fxImpact.gameObject.SetActive(true); 
-    // }
-
-    // protected virtual string GetImpactFX()
-    // {
-    //     return FXSpawner.impactOne;
-    // }
 }

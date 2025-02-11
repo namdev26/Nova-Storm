@@ -30,7 +30,7 @@ public abstract class ShootableObjectController : NamMonoBehaviour
     protected virtual void LoadDespawn()
     {
         if (this.despawn != null) return;
-        this.despawn = transform.GetComponentInChildren<Despawn>();
+        this.despawn = transform.parent.GetComponentInChildren<Despawn>();
         Debug.Log(transform.name + ": Load Despawn", gameObject);   // Implement your junk despawn logic here
     }
 

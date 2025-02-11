@@ -3,21 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipMovement : MonoBehaviour
+public class ShipMovement : NamMonoBehaviour
 {
     [SerializeField] protected Vector3 targetPosition;
     [SerializeField] protected float speed = 0.1f;
-    void FixedUpdate()
+
+    protected float distance = 0f;
+    protected float minDistance = 1f;
+    protected virtual void FixedUpdate()
     {
-        this.GetTargetPosition();
         this.LookAtTarget();
         this.Moving();
-    }
-    protected virtual void GetTargetPosition()
-    {
-        // Lấy vị trí của chuột đang click vào game world
-        this.targetPosition = InputManager.Instance.MouseWorldPos;
-        this.targetPosition.z = 0;
     }
     protected virtual void LookAtTarget()
     {
@@ -28,6 +24,8 @@ public class ShipMovement : MonoBehaviour
     }
     protected virtual void Moving()
     {
+        this.distance = Vector3.Distance(transform.position, this.targetPosition);
+        if (this.distance <= this.minDistance) return;// Nếu đã gần đến điểm đích và tàu đã đến ch�� đích
         // Di chuyển tàu đến vị trí mà người dùng đã click chuột
         Vector3 newPos = Vector3.Lerp(transform.parent.position, targetPosition, this.speed); // nội suy với bắt đầu , kết thúc, và tỉ lệ nội suy
         transform.parent.position = newPos;

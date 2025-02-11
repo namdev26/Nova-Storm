@@ -1,49 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-
-public class ShipShooting : MonoBehaviour
+public abstract class ShipShooting : MonoBehaviour
 {
     [SerializeField] protected bool isShooting = false;
-    [SerializeField] protected float shootDelay = 1f;
-    [SerializeField] protected float shootTimer = 5f;
-    // [SerializeField] protected BulletController bulletController1;
-    // public BulletController BulletController {get => bulletController1;}
-
+    [SerializeField] protected float shootDelay = 0.2f;
+    [SerializeField] protected float shootTimer = 0f;
     void Update()
     {
         this.IsShooting();
     }
-
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         this.Shooting();
     }
     protected virtual void Shooting()
     {
-        if (!this.isShooting) return;
-
         this.shootTimer += Time.fixedDeltaTime;
+        if (!this.isShooting) return;
         if (this.shootTimer < this.shootDelay) return;
-        this.shootTimer = 0f;
-
+        this.shootTimer = 0;
         Vector3 spawnPos = transform.position;
-        Quaternion rotation = transform.rotation;
-        //Transform newBullet =  Instantiate(this.bulletPrefab, spawnPos, rotation);
+        Quaternion rotation = transform.parent.rotation;
+        //Transform newBullet = Instantiate(this.bulletPrefab, spawnPos, rotation);
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne, spawnPos, rotation);
+        if (newBullet == null) return;
         newBullet.gameObject.SetActive(true);
-        if (newBullet != null) return;
-
-        newBullet.gameObject.SetActive(true);
+        Debug.Log("Shooting");
         BulletController bulletController = newBullet.GetComponent<BulletController>();
         bulletController.SetShooter(transform.parent);
-        Debug.Log("Is Shooting");
     }
-
-    protected virtual bool IsShooting()
-    {
-        this.isShooting = InputManager.Instance.OnFiring == 1;
-        return this.isShooting;
-    }
+    protected abstract bool IsShooting();
 }
