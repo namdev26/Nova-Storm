@@ -27,11 +27,11 @@ public class NamMonoBehaviour : MonoBehaviour
 
     protected virtual void ResetValue()
     {
-
+        //for override
     }
     protected virtual void OnEnable()
     {
-
+        //for override
     }
     protected virtual void Refresh(){
         //for override
